@@ -8,6 +8,9 @@
 --link-hover-color: #2196F3;
 --logo-color: #000000;
 --svg-color: #AFB1B8;
+
+--timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+--time: 250ms;
 }
 
 body {
@@ -54,8 +57,7 @@ border-bottom: 1px solid #ECECEC;
 
 
 .logo-first {
-margin-top: 24px;
-margin-bottom: 25px;
+padding: 24px 0 25px;
 
 color: var(--link-hover-color);
 font-family: 'Raleway', sans-serif;
@@ -80,10 +82,6 @@ align-items: center;
 margin-left: 93px;
 }
 
-.nav:last-child {
-margin-right: 318px;
-}
-
 .main {
 display: flex;
 }
@@ -96,21 +94,40 @@ margin-right: 50px;
 .nav .link:hover,
 .nav .link:focus {
 color: var(--link-hover-color);
+
 }
 
 .item .link.current {
+display: block;
+position: relative;
+
 color: var(--link-hover-color);
 }
 
 .item .link {
- display: flex;
+display: flex;
 align-items: center;
-padding: 21px 0;
+padding: 32px 0;
 
 color: var(--primary-text-color);
 font-weight: 500;
 letter-spacing: 0.02em;
 line-height: calc(16/14);
+
+transition: color var(--time) var(--timing-function);
+}
+
+.item .link.current::after {
+content: '';
+display: block;
+position: absolute;
+left: 0;
+bottom: -1px;
+border-radius: 2px;
+
+    width: 100%;
+    height: 4px;
+    background-color: var(--link-hover-color);
 }
 
 
@@ -120,7 +137,7 @@ line-height: calc(16/14);
  .contact {
 display: flex;
 align-items: center;
-padding-left: 0;
+margin-left: auto;
  }
 
 
@@ -160,21 +177,19 @@ margin-right: 10px;
 
 .hero {
 max-width: 1600px;
-height: 600px;
 margin-left: auto;
 margin-right: auto;
+padding: 200px 0;
 background-position: center;
  
 background-image: linear-gradient( rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
 url(../images/hero.jpg);
 text-align: center;
 background-color: var(--bg-footer-color);
-padding-bottom: 200px;
 }
 
 .hero .title {
 width: 696px;
-padding-top: 120px;
 margin: 0 auto 30px;
 
 
@@ -270,6 +285,7 @@ margin: 0;
 
 .features-items {
 display: flex;
+justify-content: space-between;
 }
 
 .image {
@@ -301,7 +317,7 @@ text-align: center;
 
 .team-list {
 display: flex;
-/* justify-content: center; */
+
 }
 
 .team-name {
@@ -324,13 +340,14 @@ color: var(--title-text-color);
 width: 270px;
 
 background-color: var(--bg-color);
-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-border-radius: 0px 0px 4px 4px;
 }
 
 
 .bg-team {
-padding-bottom: 30px;  
+padding-bottom: 30px;
+
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 0px 0px 4px 4px;
 }
 
 .social {
@@ -339,11 +356,13 @@ padding-bottom: 30px;
     padding-right: 32px;
 }
 
+
 .social-link {
 display: block;
 padding: 12px;
 border-radius: 50px;
 
+transition: var(--time) var(--timing-function);
 fill: var(--svg-color);
 }
 
@@ -395,6 +414,7 @@ border-color: var(--link-hover-color);
 /* footer */
 .footer {
 background-color: var(--bg-footer-color);
+padding: 60px 0;
 }
 
 .footer .container {
@@ -403,7 +423,7 @@ display: flex;
 
 .logo-footer {
 display: block;
-padding-top: 60px;
+
 margin-bottom: 20px;
 
 color: var(--link-hover-color);
@@ -414,11 +434,6 @@ line-height: 1.19;
 
 .logo-footer-second {
 color: var(--bg-color);
-
-}
-
-.address-item:last-child {
-padding-bottom: 60px;
 
 }
 
@@ -460,8 +475,7 @@ background: rgba(255, 255, 255, 0.1);
 fill: var(--bg-color);
 }
 
-.links-title {
-padding-top: 72px;    
+.links-title { 
 margin-top: 0;
 margin-bottom: 20px;
 font-size: 14px;
@@ -470,10 +484,14 @@ text-transform: uppercase;
 color: var(--bg-color);
 }
 
+.footer-address {
+padding: 12px 0 0;
+}
+
 .footer-address .social {
  padding: 0; 
 fill: var(--bg-color);
-/* background-color: rgba(255, 255, 255, 0.1); */
+
 }
 
 
@@ -518,17 +536,38 @@ box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px
 .project-list {
 display: flex;
 flex-wrap: wrap;
+
 }
 
+.project-card:hover .product-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
 
 .project-card {
 /* width: calc((100% - 60px) / 3); */
 width: 370px;
 
-
-
-
+position: relative;
+overflow: hidden;
 }
+
+.overlav {
+    overflow: hidden;
+}
+
+.product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background-color: rgba(33, 150, 243, 0.9);
+
+    transform: translateY(100%);
+    transition: transform 250ms var(--timing-function);
+}
+
 .project-card:not(:nth-last-child(-n + 3)) {
     margin-bottom: 30px;
 }
@@ -545,6 +584,7 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1p
 border: 1px solid #EEEEEE;
 border-top: none;
 padding: 20px 24px;
+
 }
 
 .project-name { 
@@ -554,6 +594,7 @@ margin-bottom: 4px;
 font-size: 18px;
 line-height: calc(36 / 18);
 letter-spacing: 0.06em;
+
 }
 
 .project-text {
@@ -562,4 +603,5 @@ margin: 0;
 color: var(--title-text-color);
 font-size: 16px;
 line-height: calc(30/16);
+
 }

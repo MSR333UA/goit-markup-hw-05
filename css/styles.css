@@ -114,7 +114,7 @@ font-weight: 500;
 letter-spacing: 0.02em;
 line-height: calc(16/14);
 
-transition: color var(--time) var(--timing-function);
+transition: var(--time) var(--timing-function);
 }
 
 .item .link.current::after {
@@ -168,6 +168,7 @@ color: var(--link-hover-color);
 .envelope,
 .smartphone {
 margin-right: 10px;
+transition: var(--time) var(--timing-function);
 }
 
 
@@ -218,7 +219,8 @@ line-height: 1.87;
 letter-spacing: 0.06em;
 border-radius: 4px;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-font-family: inherit
+font-family: inherit;
+transition: var(--time) var(--timing-function);
 }
 
 .button:hover,
@@ -290,6 +292,25 @@ justify-content: space-between;
 
 .image {
 width: 370px;
+position: relative;
+}
+
+.img-title {
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 27px 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+
+ 
+    line-height: calc(16/14);
+    text-align: center;
+    color: var(--bg-color);
+    background-color: rgba(47, 48, 58, 0.8);;
+
 }
 
 
@@ -354,6 +375,7 @@ border-radius: 0px 0px 4px 4px;
     display: flex;
     padding-left: 32px;
     padding-right: 32px;
+    
 }
 
 
@@ -375,7 +397,7 @@ margin-right: 10px;
 .social-link:hover,
 .social-link:focus {
 fill: var(--bg-color);
-background-color: var(--link-hover-color);  
+background-color: var(--link-hover-color);
 }
 
 
@@ -400,6 +422,7 @@ width: 170px;
 height: 92px;
 border-radius: 4px;
 cursor: pointer;
+transition: var(--time) var(--timing-function);
 }
 
 
@@ -458,7 +481,7 @@ margin-bottom: 9px;
 }
 
 .address-item .link {
-
+transition: var(--time) var(--timing-function);
 color: var(--contact-footer-color);
 font-style: normal;
 line-height: 1.71;
@@ -519,6 +542,7 @@ font-size: 16px;
 line-height: calc(26/16);
 font-family: inherit;
 text-align: center; 
+transition: var(--time) var(--timing-function);
 }
 
 .project-button:hover,
@@ -536,36 +560,44 @@ box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px
 .project-list {
 display: flex;
 flex-wrap: wrap;
-
 }
 
 .project-card:hover .product-overlay {
     transform: translateY(0);
-    opacity: 1;
+
 }
 
 .project-card {
 /* width: calc((100% - 60px) / 3); */
 width: 370px;
 
+}
+
+
+.overlay {
 position: relative;
 overflow: hidden;
 }
 
-.overlav {
-    overflow: hidden;
+.product-overlay {
+    padding: 63px 24px;
+    font-size: 18px;
+    line-height: calc(28/18);
+    color: var(--bg-team-color);
+    margin: 0;
 }
 
-.product-overlay {
+.product-overlay     {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75%;
+    height: 100%;
     background-color: rgba(33, 150, 243, 0.9);
 
     transform: translateY(100%);
-    transition: transform 250ms var(--timing-function);
+    transition: var(--time) var(--timing-function);
+    
 }
 
 .project-card:not(:nth-last-child(-n + 3)) {
@@ -578,13 +610,18 @@ overflow: hidden;
 
 .project-card:hover {
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+display: block;
 }
 
 .aside {
 border: 1px solid #EEEEEE;
 border-top: none;
 padding: 20px 24px;
-
+font-size: 18px;
+line-height: calc(36/18);
+    
+letter-spacing: 0.06em;
+color: var(--primary-text-color)
 }
 
 .project-name { 
@@ -603,5 +640,64 @@ margin: 0;
 color: var(--title-text-color);
 font-size: 16px;
 line-height: calc(30/16);
+
+}
+
+
+
+/* Модеольне вікно */
+
+
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+.backdrop.is-hidden {
+ opacity: 0;
+pointer-events: none;
+padding: 0;
+}
+
+.backdrop.is-hidden.modal {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    
+
+    width: 528px;
+    height: 581px;
+    padding: 0;
+    background-color: var(--bg-color);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+}
+.close-button {
+
+    
+cursor: pointer;
+background-color:var(--bg-color);
+border-radius:50%;
+border: none;
+
+padding: 4px;
+border: 1px solid rgba(0, 0, 0, 0.1);
+background-color: var(--bg-color);
+}
+
+.close:hover {
+fill: var(--link-hover-color);
 
 }

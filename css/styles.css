@@ -508,6 +508,7 @@ fill: var(--bg-color);
 
 .links-title { 
 margin-top: 0;
+font-weight: 700;
 margin-bottom: 20px;
 font-size: 14px;
 line-height: calc(16 / 14);
@@ -699,6 +700,14 @@ padding: 0;
 
 }
 .close-button {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 30px;
+width: 30px;
+
+
+
 position: absolute;
  right: 8px;
  top: 8px;   
@@ -709,7 +718,7 @@ background-color:var(--bg-color);
 border-radius:50%;
 border: none;
 
-padding: 4px;
+
 border: 1px solid rgba(0, 0, 0, 0.1);
 background-color: var(--bg-color);
 }

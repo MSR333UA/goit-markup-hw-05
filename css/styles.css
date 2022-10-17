@@ -114,7 +114,7 @@ font-weight: 500;
 letter-spacing: 0.02em;
 line-height: calc(16/14);
 
-transition: var(--time) var(--timing-function);
+transition: color var(--time) var(--timing-function);
 }
 
 .item .link.current::after {
@@ -168,7 +168,7 @@ color: var(--link-hover-color);
 .envelope,
 .smartphone {
 margin-right: 10px;
-transition: var(--time) var(--timing-function);
+transition: fill var(--time) var(--timing-function);
 }
 
 
@@ -390,8 +390,12 @@ height: 44px;
 width: 44px;
 border-radius: 50px;
 
-transition: var(--time) var(--timing-function);
+ transition: background-color var(--time) var(--timing-function);
 fill: var(--svg-color);
+}
+
+.icon {
+    transition: fill var(--time) var(--timing-function);
 }
 
 .social-item:not(:last-child),
@@ -430,7 +434,7 @@ width: 170px;
 height: 92px;
 border-radius: 4px;
 cursor: pointer;
-transition: var(--time) var(--timing-function);
+transition: border var(--time) var(--timing-function);
 }
 
 
@@ -489,7 +493,7 @@ margin-bottom: 9px;
 }
 
 .address-item .link {
-transition: var(--time) var(--timing-function);
+transition: color var(--time) var(--timing-function);
 color: var(--contact-footer-color);
 font-style: normal;
 line-height: 1.71;
@@ -551,7 +555,7 @@ font-size: 16px;
 line-height: calc(26/16);
 font-family: inherit;
 text-align: center; 
-transition: var(--time) var(--timing-function);
+transition: color, background-color, box-shadow var(--time) var(--timing-function);
 }
 
 .project-button:hover,
@@ -596,7 +600,7 @@ overflow: hidden;
     margin: 0;
 }
 
-.product-overlay     {
+.product-overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -605,7 +609,7 @@ overflow: hidden;
     background-color: rgba(33, 150, 243, 0.9);
 
     transform: translateY(100%);
-    transition: var(--time) var(--timing-function);
+    transition: transform var(--time) var(--timing-function);
     
 }
 
@@ -698,6 +702,7 @@ padding: 0;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
+    transition: transform var(--time) var(--timing-function);
 }
 .close-button {
 display: flex;
